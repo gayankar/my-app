@@ -22,5 +22,11 @@ spec:
           mountPath: /usr/share/nginx/html
       volumes:
       - name: html
-        configMap:
-          name: nginx-html
+        emptyDir: {}
+      initContainers:
+      - name: copy-html
+        image: busybox
+        command: ['sh', '-c', 'cp /tmp/index.html /usr/share/nginx/html/ || echo "No index.html found"']
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
