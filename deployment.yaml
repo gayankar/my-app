@@ -1,4 +1,4 @@
-#nginx Deployment - new change -t2
+#nginx Deployment - new change
 apiVersion: apps/v1
 kind: Deployment
 metadata:
